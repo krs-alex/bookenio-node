@@ -1,0 +1,43 @@
+<div class="innerHead">
+    <h2>
+        {{innerHeaderText}}
+    </h2>
+</div>
+{{#each results}}
+<div class="hotel-results">
+    <div class="hotel-picture">
+        <img src="{{this.pictureURL}}" width="200">
+    </div>
+    <div class="hotel-infos">
+        <div class="hotel-infos-left">
+            <h2>
+                <u>
+                    {{this.Hotelname}}
+                </u>
+            </h2>
+            <h4>
+                <u>
+                    Ausstattungen:
+                </u>
+            </h4>
+            <ul>
+                <li>Ausstattung 1</li>
+                <li>Ausstattung 2</li>
+                <li>Ausstattung 3</li>
+                <li>etc..</li>
+            </ul>
+        </div>
+        <div class="hotel-infos-right">
+            <div>
+                <div class="stars" style="--rating: {{this.Bewertung}};"></div>
+            <h6>
+                {{this.Rezessionen}} Bewertungen — {{this.Bewertung}}
+            </h6>
+            </div>
+            <h3>
+                ab {{this.Grundpreis}} €
+            </h3>
+        </div>
+    </div>
+</div>
+{{/each}}

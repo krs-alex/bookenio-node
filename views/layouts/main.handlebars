@@ -1,0 +1,76 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>Bookenio {{title}}</title>
+        <link rel="stylesheet" type="text/css" href="../style.css">
+        <link rel="icon" type="image/x-icon" href="../pics/logo.png">
+    </head>
+    <body>
+        <header class="header">
+            <a class= "logo" href="./">
+                <img src="../pics/banner.png" height="70">
+            </a>
+            <div class="logo-text">
+                <h1>
+                    Finden Sie Ihre nächste Unterkunft
+                </h1>
+            </div>
+        </header>
+        <div class="wrapper">
+            <main>
+                <div class="content">
+                    <div class="innertube">
+                        {{{body}}}
+                    </div>
+                </div>
+            </main>
+            <nav class="nav">
+                <div class="innertube">
+                    <form class="search" method="POST" action="">
+                        <h2>
+                            Suche
+                        </h2>
+                        <label>
+                            Reiseziel
+                            <input name="target" list="locations" placeholder="Wohin reisen Sie?" value="{{target}}" required="">
+                        </label>
+                        <label>
+                            Check-In Datum
+                            <input name="checkIn" type="date" value="{{checkIn}}" required="">
+                        </label>
+                        <label>
+                            Check-Out Datum
+                            <input name="checkOut" type="date" value="{{checkOut}}" required="">
+                        </label>
+                        <label>
+                            Anzahl der Personen
+                            <input name="peopleNumber" type="number" min="1" value="{{#if peopleNumber}}{{peopleNumber}}{{else}}1{{/if}}" step="1" required="">
+                        </label>
+                        <button type="submit" class="search-button">
+                            Suche
+                        </button>
+                    </form>
+                </div>
+            </nav>
+        </div>
+        <footer class="footer">
+            <div class="innertube">
+                <p>
+                    Footer...
+                </p>
+            </div>
+        </footer>
+        <div class="tree">
+            <img src="../pics/tree.png">
+        </div>
+    </body>
+</html>
+
+<datalist id="locations">
+    {{#each cities}}
+    <option value="{{this.Stadt}}">
+    {{/each}}
+    {{#each countries}}
+    <option value="{{this.Land}}">
+    {{/each}}
+</datalist>
