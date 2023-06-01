@@ -1,7 +1,7 @@
 const config = {
     user: 'bookenio',
     password: 'bookadmin',
-    server: 'NB300019',
+    server: '127.0.0.1',
     database: 'bookenio',
     options: {
       encrypt: false,
