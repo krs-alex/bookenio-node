@@ -4,8 +4,7 @@ const config = {
     server: '127.0.0.1',
     database: 'bookenio',
     options: {
-      encrypt: false,
-      instanceName: 'SQLEXPRESS'
+      encrypt: false
       }
   }
   
