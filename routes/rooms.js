@@ -6,12 +6,13 @@ const dbconfig = require('../config/database.js')
 
 router.post('/', async function (req, res, next) {
     let i = 0
-    let obj
+    let obj = {}
+    const allHID = await getAllHID()
+    const onlyHID = allHID.map(item => item.HID)
     while(i < 100) {
-        obj = createRandomObject()
-        console.log(obj.prop1 + ' | ' + obj.prop2 + ' | ' + obj.prop3 + ' | ' + obj.prop4)
-        if(obj.prop1 !== 12){
-            await insertRooms(obj)
+        obj[i] = createRandomObject()
+        if(onlyHID.includes(obj[i].prop1)) {
+            await insertRooms(obj[i])
         }
         i++
     }
@@ -48,12 +49,26 @@ function createRandomObject() {
         }
     }
     const obj = {
-      prop1: Math.floor(Math.random() * 36) + 2,
+      prop1: Math.floor(Math.random() * 252) + 1,
       prop2: prop2,
       prop3: (Math.floor(Math.random() * 11) + 10) * prop2,
       prop4: (Math.floor(Math.random() * 80) + 40) * 10 * prop2,
     }
     return obj;
+}
+
+async function getAllHID() {
+    const pool = await sql.connect(dbconfig)
+    try {
+        const request = (await pool).request()
+        const query = 'SELECT HID FROM Hotels'
+        const result = await request.query(query)
+        return result.recordset
+    } catch (err) {
+        console.error(err)
+    } finally {
+        await sql.close()
+    }
 }
 
 module.exports = router

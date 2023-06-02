@@ -162,6 +162,7 @@ nav ul a {
 
 .hotel-picture {
     margin: 10px;
+    align-self: center;
 }
 
 .hotel-picture img {
