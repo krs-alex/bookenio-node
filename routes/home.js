@@ -21,7 +21,6 @@ router.post('/', async function (req, res, next) {
     } else {
         innerHeaderText += ': ' + hotels.rowsAffected[0] + ' Unterkünfte gefunden.'
     }
-    console.log(hotels)
     res.render('results', {
         cities: await getCities(),
         countries: await getCountries(),
